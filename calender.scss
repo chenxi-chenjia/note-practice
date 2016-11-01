@@ -1,0 +1,174 @@
+@font-face {
+  font-family: 'iconfont';  /* project id："170594" */
+  src: url('https://at.alicdn.com/t/font_qlx6d7gypjw3tyb9.eot');
+  src: url('https://at.alicdn.com/t/font_qlx6d7gypjw3tyb9.eot') format('embedded-opentype'),
+  url('https://at.alicdn.com/t/font_qlx6d7gypjw3tyb9.woff') format('woff'),
+  url('https://at.alicdn.com/t/font_qlx6d7gypjw3tyb9.ttf') format('truetype'),
+  url('https://at.alicdn.com/t/font_qlx6d7gypjw3tyb9.svg#iconfont') format('svg');
+}
+.icon{
+	font-family: 'iconfont' !important;
+}
+*{
+	padding:0;
+	margin:0;
+	font-family:"微软雅黑";
+	box-sizing:border-box;
+}
+ul,i{
+	list-style:none;
+}
+html{
+	font-size:100px;
+}
+$Hwidth:320px,360px,375px,412px,414px,768px;
+$Swidth:750px;
+@each $i in $Hwidth{
+	@media screen and (min-width:#{$i}){
+		html{
+			font-size:100px * $i / $Swidth;
+		}
+	} 
+}
+body{
+	font-size:16px;
+	background:#f4f4f4;
+}
+@mixin nofloat{
+	content:"";
+	display:block;
+	clear:both;
+}
+@mixin incenter{
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	margin:auto;
+}
+@mixin x{
+	&:after{
+		content:"";
+		display:block;
+		width:80%;
+		height:10%;
+		position:absolute;
+		@include incenter;
+		background:#fff;
+	}
+	&:before{
+		content:"";
+		display:block;
+		height:80%;
+		width:10%;
+		position:absolute;
+		@include incenter;
+		background:#fff;
+	}
+}
+#header{
+	width:100%;
+	height:0.8rem;
+	background:#eee;
+	text-align:center;
+	font-size:20px;
+	color:black;
+	line-height:0.8rem;
+}
+#input{
+	width:100%;
+	height:1rem;
+	position: relative;
+	margin-top:0.5rem;
+	input{
+		width:80%;
+		display:block;
+		height:70%;
+		outline:none;
+		border:0;
+		box-shadow:0 0 0.1rem #4f4f4f;
+		border-radius:0.05rem;
+		font-size:20px;
+		font-family: "Arial";
+		color:#1f1f1f;
+		@include incenter;
+	}
+	.add{
+		width:0.3rem;
+		height:0.3rem;
+		border-radius:50%;
+		background:#4f4f4f;
+		opacity:.95;
+		@include incenter;
+		@include x;
+		right:15%;
+		left:auto;
+	}
+}
+#content{
+	width:100%;
+	padding:0 10%;
+	margin-top: 0.5rem;
+	padding-bottom:2rem;
+	li{
+		width:100%;
+		height: 0.6rem;
+		padding:0 0.1rem;
+		background:#fff;
+		box-shadow:0.01rem 0.01rem 0.2rem #aaa;
+		font:20px/0.6rem "Arial";
+		color:#1f1f1f;
+		position:relative;
+		.delete{
+			width:0.3rem;
+			height:0.3rem;
+			border-radius:50%;
+			@include x;
+			@include incenter;
+			background:#9c9c9c;
+			right:5%;
+			left:auto;
+			transform:rotate(45deg);
+			transition:all .1s;
+			opacity:.7;
+			display:none;
+		}
+	}
+	.done{
+		background:#f6f6f6;
+		color:#8d8d8d;
+		text-decoration:line-through;
+		.delete{
+			display:block;
+		}
+	}
+	li+li{
+		margin-top:0.1rem;
+	}
+}
+#footer{
+	width:100%;
+	height:0.6rem;
+	position:fixed;
+	bottom:0;
+	left:0;
+	ul{
+		width:80%;
+		height:100%;
+		margin:0 auto;
+	}
+	ul:after{
+		@include nofloat;
+	}
+	li{
+		float: left;
+		width:30%;
+		background:#fff;
+		font:400 20px/0.6rem "微软雅黑";
+		text-align:center;
+	}
+	li+li{
+		margin-left:5%;
+	}
+}
